@@ -15,12 +15,12 @@ export class ChatGateway {
   @SubscribeMessage('channel_1')
   handleMessage(@MessageBody() message: string): void {
     Logger.log(message);
-    this.server.emit('common_channel', message)
+    this.server.emit('common_channel', {message: message, channel: 1})
   }
 
   @SubscribeMessage('channel_2')
   handleMessageChannel1(@MessageBody() message: string): void {
     Logger.log(message);
-    this.server.emit('common_channel', message)
+    this.server.emit('common_channel', {message: message, channel: 2})
   }
 }
